@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "manydoors:block/pressure_sensor"
+    },
+    "powered=true": {
+      "model": "manydoors:block/pressure_sensor_on"
+    }
+  }
+}

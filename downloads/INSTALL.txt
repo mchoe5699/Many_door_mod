@@ -1,0 +1,5 @@
+Minecraft 1.20.1 / Forge 47.4.0 / Java 17
+
+Copy manydoors-0.2.0.jar into mods/.
+For HomeNet integration, also install the original qwertys_homenet-1.0.0.jar.
+In multiplayer, install the mods on both client and server.

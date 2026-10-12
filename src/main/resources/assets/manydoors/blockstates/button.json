@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "manydoors:block/button"
+    },
+    "powered=true": {
+      "model": "manydoors:block/button_on"
+    }
+  }
+}

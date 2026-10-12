@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "manydoors:block/contact_sensor"
+    },
+    "powered=true": {
+      "model": "manydoors:block/contact_sensor_on"
+    }
+  }
+}

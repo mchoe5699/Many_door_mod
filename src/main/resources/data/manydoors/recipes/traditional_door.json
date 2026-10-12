@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "minecraft:planks"
+  },
+  "result": "manydoors:traditional_door",
+  "count": 1
+}

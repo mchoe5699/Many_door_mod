@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "manydoors:block/status_lamp"
+    },
+    "powered=true": {
+      "model": "manydoors:block/status_lamp_on"
+    }
+  }
+}

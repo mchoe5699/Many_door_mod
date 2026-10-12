@@ -1,0 +1,1 @@
+{"required":true,"minVersion":"0.8","package":"com.mchoe5699.manydoors.mixin","compatibilityLevel":"JAVA_17","mixins":["ReceiverDoorMixin","CallerDoorMixin"],"injectors":{"defaultRequire":1}}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "manydoors:block/emergency_button"
+    },
+    "powered=true": {
+      "model": "manydoors:block/emergency_button_on"
+    }
+  }
+}
