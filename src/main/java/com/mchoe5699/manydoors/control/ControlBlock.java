@@ -21,10 +21,14 @@ public final class ControlBlock extends BaseEntityBlock {
     public final Kind kind;
     public ControlBlock(Kind kind,Properties props){super(props);this.kind=kind;registerDefaultState(stateDefinition.any().setValue(POWERED,false).setValue(FACING,Direction.NORTH));}
     @Override protected void createBlockStateDefinition(StateDefinition.Builder<Block,BlockState> b){b.add(POWERED,FACING);}
-    @Override public BlockState getStateForPlacement(BlockPlaceContext c){return defaultBlockState().setValue(FACING,c.getHorizontalDirection().getOpposite());}
+    @Override public BlockState getStateForPlacement(BlockPlaceContext c){if(kind==Kind.PRESSURE_SENSOR)return c.getClickedFace()==Direction.UP?defaultBlockState():null;
+        if(c.getClickedFace().getAxis()==Direction.Axis.Y)return null;
+        BlockState s=defaultBlockState().setValue(FACING,c.getClickedFace());return canSurvive(s,c.getLevel(),c.getClickedPos())?s:null;}
     @Override public void setPlacedBy(Level l,BlockPos p,BlockState s,net.minecraft.world.entity.LivingEntity entity,net.minecraft.world.item.ItemStack stack){if(!l.isClientSide&&entity instanceof Player player&&l.getBlockEntity(p) instanceof ControlBlockEntity be)be.setOwner(player.getUUID());}
-    @Override public RenderShape getRenderShape(BlockState s){return RenderShape.MODEL;}
-    @Override public VoxelShape getShape(BlockState s,BlockGetter l,BlockPos p,CollisionContext c){return kind==Kind.PRESSURE_SENSOR?box(1,0,1,15,2,15):box(4,0,4,12,4,12);}
+    @Override public RenderShape getRenderShape(BlockState s){return RenderShape.INVISIBLE;}
+    @Override public VoxelShape getShape(BlockState s,BlockGetter l,BlockPos p,CollisionContext c){MountSettings mount=l.getBlockEntity(p) instanceof ControlBlockEntity be?be.mount():MountSettings.defaults();return Shapes.create(mount.bounds(s.getValue(FACING),kind));}
+    @Override public boolean canSurvive(BlockState s,LevelReader l,BlockPos p){Direction direction=kind==Kind.PRESSURE_SENSOR?Direction.DOWN:s.getValue(FACING).getOpposite();BlockPos backing=p.relative(direction);return l.getBlockState(backing).isFaceSturdy(l,backing,direction.getOpposite());}
+    @Override public BlockState updateShape(BlockState s,Direction direction,BlockState other,LevelAccessor l,BlockPos p,BlockPos neighbor){Direction support=kind==Kind.PRESSURE_SENSOR?Direction.DOWN:s.getValue(FACING).getOpposite();return direction==support&&!canSurvive(s,l,p)?Blocks.AIR.defaultBlockState():super.updateShape(s,direction,other,l,p,neighbor);}
     @Override public BlockEntity newBlockEntity(BlockPos p,BlockState s){return new ControlBlockEntity(p,s);}
     @Override public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level l,BlockState s,BlockEntityType<T> t){return l.isClientSide?null:createTickerHelper(t,ManyDoors.CONTROL_ENTITY.get(),(level,pos,state,be)->be.tick());}
     @Override public InteractionResult use(BlockState s,Level l,BlockPos p,Player player,InteractionHand hand,BlockHitResult hit){

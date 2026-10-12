@@ -7,6 +7,7 @@
 
 - `DoorControl.isDoor`는 블록의 `BlockStateProperties.OPEN` 여부로 문을 판별합니다.
   새 문 기준 블록에도 동일 속성을 사용해 기존 연결 도구와 열림 제어가 동작합니다.
+  0.3.0의 문짝 충돌 엔티티도 원본 DoorLinkerItem 클릭을 기준 블록으로 전달하며 실제 도구 흐름을 테스트했습니다.
 - 도어폰·현관 호출기·로비폰의 기반 클래스는 `CallerBlockEntity`입니다.
   `openDoors()`가 실행되면 추가 링크의 문들도 엽니다.
 - 월패드·비디오폰·인터폰·경비실기의 기반 클래스는 `ReceiverBlockEntity`입니다.

@@ -16,6 +16,13 @@ base {
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
+sourceSets {
+    visualTest {
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += output + compileClasspath
+    }
+}
+
 minecraft {
     // The mappings can be changed at any time and must be in the following format.
     // Channel:   Version:
@@ -78,11 +85,16 @@ minecraft {
             mods {
                 "${mod_id}" {
                     source sourceSets.main
+                    if (project.hasProperty("visualTest")) source sourceSets.visualTest
                 }
             }
         }
 
         client {
+            if (project.hasProperty("visualTest")) {
+                property 'manydoors.visualTest', 'true'
+                args '--quickPlaySingleplayer', 'manydoors_visual_test'
+            }
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             property 'forge.enabledGameTestNamespaces', mod_id
         }

@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.state.*;
 import net.minecraft.world.phys.*;
 import net.minecraft.world.phys.shapes.*;
 
-public final class DoorPartBlock extends BaseEntityBlock {
+public class DoorPartBlock extends BaseEntityBlock {
     public DoorPartBlock(Properties p){super(p);}
     @Override public net.minecraft.world.item.ItemStack getCloneItemStack(BlockGetter l,BlockPos p,BlockState s){DoorBlockEntity d=l instanceof Level level?DoorBlockEntity.at(level,p):null;return d==null?net.minecraft.world.item.ItemStack.EMPTY:new net.minecraft.world.item.ItemStack(com.mchoe5699.manydoors.ManyDoors.DOOR_ITEMS.get(d.style()).get());}
     @Override public RenderShape getRenderShape(BlockState s){return RenderShape.INVISIBLE;}
@@ -24,7 +24,7 @@ public final class DoorPartBlock extends BaseEntityBlock {
         DoorBlockEntity d=DoorBlockEntity.at(l,p);if(!l.isClientSide&&d!=null)d.manualToggle();return InteractionResult.sidedSuccess(l.isClientSide);
     }
     @Override public void onRemove(BlockState old,Level l,BlockPos p,BlockState next,boolean moving){
-        if(!old.is(next.getBlock())&&!l.isClientSide){DoorBlockEntity d=DoorBlockEntity.at(l,p);if(d!=null&&!d.restructuring)l.destroyBlock(d.getBlockPos(),true);}
+        // Legacy sweep placeholders are retired; deleting one must not delete its door.
         super.onRemove(old,l,p,next,moving);
     }
 }

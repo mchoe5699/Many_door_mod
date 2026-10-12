@@ -8,7 +8,7 @@ public record DoorSettings(int width, int height, double thickness, double angle
         public boolean allowsSensor() { return this != MANUAL; }
     }
     public static DoorSettings defaults(DoorStyle style) {
-        return new DoorSettings(style.width, style.height, 0.125, 90, Mode.BOTH, 60, false);
+        return new DoorSettings(style.width, style.height, 0.125, 90, style==DoorStyle.LOBBY_AUTOMATIC?Mode.AUTOMATIC:Mode.BOTH, 60, false);
     }
     public boolean valid() {
         return width >= 1 && width <= 6 && height >= 1 && height <= 6

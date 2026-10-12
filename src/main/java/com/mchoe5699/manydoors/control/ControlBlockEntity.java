@@ -16,6 +16,9 @@ public final class ControlBlockEntity extends BlockEntity {
     private UUID owner;
     private long poweredUntil;
     private int radius=3;
+    private MountSettings mount=MountSettings.defaults();
+    public MountSettings mount(){return mount;}
+    public String configure(MountSettings next,net.minecraft.world.entity.player.Player player){if(level==null||level.isClientSide)return "server_only";if(!canEdit(player))return "not_owner";if(!next.valid())return "invalid_settings";mount=next;radius=next.range();sync();return "ok";}
     public ControlBlockEntity(BlockPos p,BlockState s){super(ManyDoors.CONTROL_ENTITY.get(),p,s);}
     public List<LinkTarget> targets(){return Collections.unmodifiableList(targets);}
     public void setOwner(UUID id){owner=id;setChanged();}
@@ -26,7 +29,7 @@ public final class ControlBlockEntity extends BlockEntity {
         targets.add(target);sync();return "linked";
     }
     public void clear(){targets.clear();sync();}
-    public void radius(int n){radius=Math.max(1,Math.min(8,n));sync();}
+    public void radius(int n){radius=Math.max(1,Math.min(8,n));mount=new MountSettings(mount.x(),mount.y(),mount.depth(),mount.scale(),radius);sync();}
     public void press(){
         if(level==null||level.isClientSide)return;
         boolean remote=((ControlBlock)getBlockState().getBlock()).kind==ControlBlock.Kind.EMERGENCY_BUTTON;
@@ -53,8 +56,9 @@ public final class ControlBlockEntity extends BlockEntity {
         if(targets.removeIf(t->level.hasChunkAt(t.pos())&&t.resolve(level)==null))sync();
     }
     private void sync(){setChanged();if(level!=null)level.sendBlockUpdated(worldPosition,getBlockState(),getBlockState(),3);}
-    @Override protected void saveAdditional(CompoundTag t){super.saveAdditional(t);ListTag list=new ListTag();targets.forEach(v->list.add(v.save()));t.put("Targets",list);t.putInt("Radius",radius);if(owner!=null)t.putUUID("Owner",owner);}
-    @Override public void load(CompoundTag t){super.load(t);targets.clear();for(Tag v:t.getList("Targets",Tag.TAG_COMPOUND)){if(((CompoundTag)v).hasUUID("Identity")&&targets.size()<16)targets.add(LinkTarget.load((CompoundTag)v));}radius=t.contains("Radius")?Math.max(1,Math.min(8,t.getInt("Radius"))):3;owner=t.hasUUID("Owner")?t.getUUID("Owner"):null;}
+    @Override protected void saveAdditional(CompoundTag t){super.saveAdditional(t);ListTag list=new ListTag();targets.forEach(v->list.add(v.save()));t.put("Targets",list);t.putInt("Radius",radius);t.put("Mount",mount.save());if(owner!=null)t.putUUID("Owner",owner);}
+    @Override public void load(CompoundTag t){super.load(t);targets.clear();for(Tag v:t.getList("Targets",Tag.TAG_COMPOUND)){if(((CompoundTag)v).hasUUID("Identity")&&targets.size()<16)targets.add(LinkTarget.load((CompoundTag)v));}radius=t.contains("Radius")?Math.max(1,Math.min(8,t.getInt("Radius"))):3;mount=t.contains("Mount")?MountSettings.load(t.getCompound("Mount")):new MountSettings(0,0,0,1,radius);owner=t.hasUUID("Owner")?t.getUUID("Owner"):null;}
     @Override public CompoundTag getUpdateTag(){return saveWithoutMetadata();}
     @Override public ClientboundBlockEntityDataPacket getUpdatePacket(){return ClientboundBlockEntityDataPacket.create(this);}
+    @Override public net.minecraft.world.phys.AABB getRenderBoundingBox(){return new net.minecraft.world.phys.AABB(worldPosition).inflate(2);}
 }

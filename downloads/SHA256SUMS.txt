@@ -1,1 +1,2 @@
 034f4a3f197ac8ea8eb0ed424b752834ed508f36b375c23c1bef0b28e7a5fbf8  manydoors-0.2.0.jar
+334992b1020fb0db609d768b65ba942104a3ec6334efed2aabc360ff8d9bb2bf  manydoors-0.3.0.jar

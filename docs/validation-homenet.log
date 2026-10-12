@@ -1,13 +1,14 @@
-[00:14:10] [Server thread/INFO] [minecraft/GameTestServer]: Started game test server
-[00:14:11] [Server thread/INFO] [minecraft/GameTestBatchRunner]: Running test batch 'defaultBatch:1' (19 tests)...
-[00:14:12] [Server thread/INFO] [minecraft/GameTestServer]: 20 tests are now running!
-[00:14:13] [Server thread/INFO] [minecraft/GameTestServer]: [++__++++++++++_+__+ ]
-[00:14:13] [Server thread/INFO] [minecraft/GameTestServer]: [++_+++++++++++_++++ ]
-[00:14:14] [Server thread/INFO] [minecraft/GameTestServer]: [++_++++++++++++++++ ]
-[00:14:14] [Server thread/INFO] [minecraft/GameTestBatchRunner]: Running test batch 'homenet:1' (1 tests)...
-[00:14:14] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++]
-[00:14:14] [Server thread/INFO] [minecraft/GameTestServer]: ========= 20 GAME TESTS COMPLETE ======================
-[00:14:14] [Server thread/INFO] [minecraft/GameTestServer]: All 20 required tests passed :)
-[00:14:14] [Server thread/INFO] [minecraft/GameTestServer]: ====================================================
-[00:14:16] [Server thread/INFO] [minecraft/GameTestServer]: Game test server shutting down
-BUILD SUCCESSFUL in 33s
+[02:15:34] [Server thread/INFO] [minecraft/GameTestServer]: Started game test server
+[02:15:36] [Server thread/INFO] [minecraft/GameTestBatchRunner]: Running test batch 'defaultBatch:1' (26 tests)...
+[02:15:37] [Server thread/INFO] [minecraft/GameTestServer]: 27 tests are now running!
+[02:15:38] [Server thread/INFO] [minecraft/GameTestServer]: [++__+++_+++++_+++__++_+__+ ]
+[02:15:38] [Server thread/INFO] [minecraft/GameTestServer]: [++__++++++++++++++_+++++++ ]
+[02:15:39] [Server thread/INFO] [minecraft/GameTestServer]: [++_+++++++++++++++++++++++ ]
+[02:15:39] [Server thread/INFO] [minecraft/GameTestServer]: [++_+++++++++++++++++++++++ ]
+[02:15:39] [Server thread/INFO] [minecraft/GameTestBatchRunner]: Running test batch 'homenet:1' (1 tests)...
+[02:15:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++]
+[02:15:39] [Server thread/INFO] [minecraft/GameTestServer]: ========= 27 GAME TESTS COMPLETE ======================
+[02:15:39] [Server thread/INFO] [minecraft/GameTestServer]: All 27 required tests passed :)
+[02:15:39] [Server thread/INFO] [minecraft/GameTestServer]: ====================================================
+[02:15:41] [Server thread/INFO] [minecraft/GameTestServer]: Game test server shutting down
+BUILD SUCCESSFUL in 34s

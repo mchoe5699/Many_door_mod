@@ -1,0 +1,14 @@
+[02:24:55] [Server thread/INFO] [co.mc.ma.vi.VisualSmoke/]: VISUAL_SCENE_READY
+[02:25:00] [IO-Worker-5/INFO] [co.mc.ma.vi.VisualSmoke/]: VISUAL_SCREENSHOT 01-showroom Saved screenshot as 01-showroom.png
+[02:25:04] [IO-Worker-5/INFO] [co.mc.ma.vi.VisualSmoke/]: VISUAL_SCREENSHOT 02-wall-button Saved screenshot as 02-wall-button.png
+[02:25:09] [IO-Worker-8/INFO] [co.mc.ma.vi.VisualSmoke/]: VISUAL_SCREENSHOT 03-wall-sensor Saved screenshot as 03-wall-sensor.png
+[02:25:13] [IO-Worker-5/INFO] [co.mc.ma.vi.VisualSmoke/]: VISUAL_SCREENSHOT 04-door-settings Saved screenshot as 04-door-settings.png
+[02:25:18] [IO-Worker-8/INFO] [co.mc.ma.vi.VisualSmoke/]: VISUAL_SCREENSHOT 05-device-position Saved screenshot as 05-device-position.png
+[02:25:22] [Render thread/INFO] [co.mc.ma.vi.VisualSmoke/]: VISUAL_PNG_JPEG_IMPORT_OK
+[02:25:27] [IO-Worker-5/INFO] [co.mc.ma.vi.VisualSmoke/]: VISUAL_SCREENSHOT 06-photo-editor Saved screenshot as 06-photo-editor.png
+[02:25:31] [Render thread/INFO] [co.mc.ma.vi.VisualSmoke/]: VISUAL_DESIGN_ROUND_TRIP_OK -911084477
+[02:25:31] [IO-Worker-8/INFO] [co.mc.ma.vi.VisualSmoke/]: VISUAL_SCREENSHOT 07-custom-door Saved screenshot as 07-custom-door.png
+[02:25:36] [IO-Worker-8/INFO] [co.mc.ma.vi.VisualSmoke/]: VISUAL_SCREENSHOT 08-lobby-mount Saved screenshot as 08-lobby-mount.png
+[02:25:40] [Render thread/INFO] [co.mc.ma.vi.VisualSmoke/]: VISUAL_SMOKE_COMPLETE
+[02:25:40] [IO-Worker-6/INFO] [co.mc.ma.vi.VisualSmoke/]: VISUAL_SCREENSHOT 09-lobby-open Saved screenshot as 09-lobby-open.png
+BUILD SUCCESSFUL in 1m 16s

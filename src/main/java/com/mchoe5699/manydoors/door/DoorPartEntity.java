@@ -15,7 +15,7 @@ public final class DoorPartEntity extends BlockEntity {
     public BlockPos anchor(){return anchor;}
     public UUID identity(){return identity;}
     public void bind(BlockPos p,UUID id){anchor=p.immutable();identity=id;setChanged();if(level!=null)level.sendBlockUpdated(worldPosition,getBlockState(),getBlockState(),3);}
-    public void tick(){if(level!=null&&!level.isClientSide&&level.getGameTime()%20==0&&level.hasChunkAt(anchor)&&DoorBlockEntity.at(level,worldPosition)==null)level.removeBlock(worldPosition,false);}
+    public void tick(){if(level!=null&&!level.isClientSide&&level.getGameTime()%20==0&&level.hasChunkAt(anchor)&&(getBlockState().is(ManyDoors.DOOR_PART.get())||DoorBlockEntity.at(level,worldPosition)==null))level.removeBlock(worldPosition,false);}
     @Override protected void saveAdditional(CompoundTag t){super.saveAdditional(t);t.putLong("Anchor",anchor.asLong());t.putUUID("Identity",identity);}
     @Override public void load(CompoundTag t){super.load(t);anchor=BlockPos.of(t.getLong("Anchor"));if(t.hasUUID("Identity"))identity=t.getUUID("Identity");}
     @Override public CompoundTag getUpdateTag(){return saveWithoutMetadata();}

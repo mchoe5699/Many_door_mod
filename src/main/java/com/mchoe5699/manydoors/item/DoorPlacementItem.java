@@ -17,7 +17,7 @@ public final class DoorPlacementItem extends Item {
         Level l=c.getLevel();Player player=c.getPlayer();if(player==null)return InteractionResult.FAIL;
         BlockPos pos=c.getClickedPos().relative(c.getClickedFace());Direction facing=player.getDirection();
         DoorSettings settings=DoorSettings.defaults(style);
-        for(BlockPos cell:DoorGeometry.footprint(pos,facing,style,settings)){
+        for(BlockPos cell:DoorBlockEntity.mountingCells(pos,style,settings)){
             if(!l.hasChunkAt(cell)||l.isOutsideBuildHeight(cell)||!l.getBlockState(cell).isAir()||!l.mayInteract(player,cell)||!player.mayUseItemAt(cell,c.getClickedFace(),c.getItemInHand())){
                 if(!l.isClientSide)player.displayClientMessage(Component.translatable("message.manydoors.no_space"),true);return InteractionResult.FAIL;
             }

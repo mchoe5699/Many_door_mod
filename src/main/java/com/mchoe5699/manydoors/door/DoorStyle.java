@@ -32,6 +32,7 @@ public enum DoorStyle {
     ROLLER_SHUTTER("roller_shutter", Motion.ROLL, Surface.STEEL, 3, 3),
     SECTIONAL_GARAGE("sectional_garage", Motion.SECTIONAL, Surface.WHITE, 3, 3),
     UP_AND_OVER("up_and_over_garage", Motion.OVERHEAD, Surface.STEEL, 3, 3),
+    LOBBY_AUTOMATIC("lobby_automatic_door", Motion.DOUBLE_SLIDE, Surface.GLASS, 3, 3),
     VERTICAL_LIFT("vertical_lift_door", Motion.LIFT, Surface.STEEL, 2, 3);
 
     public enum Motion { SWING, DOUBLE_SWING, PIVOT, SLIDE, DOUBLE_SLIDE, TELESCOPIC, FOLD, BIFOLD, REVOLVE, ROLL, SECTIONAL, OVERHEAD, LIFT }

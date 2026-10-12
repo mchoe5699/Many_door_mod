@@ -23,7 +23,7 @@ public class ConfigurableDoorBlock extends BaseEntityBlock {
     @Override public BlockEntity newBlockEntity(BlockPos p,BlockState s){return new DoorBlockEntity(p,s);}
     @Override public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level l,BlockState s,BlockEntityType<T> t){return createTickerHelper(t,com.mchoe5699.manydoors.ManyDoors.DOOR_ENTITY.get(),(level,pos,state,be)->be.tick());}
     @Override public VoxelShape getShape(BlockState s,BlockGetter l,BlockPos p,CollisionContext c){return l.getBlockEntity(p) instanceof DoorBlockEntity d?d.shapeAt(p):Shapes.empty();}
-    @Override public VoxelShape getCollisionShape(BlockState s,BlockGetter l,BlockPos p,CollisionContext c){return getShape(s,l,p,c);}
+    @Override public VoxelShape getCollisionShape(BlockState s,BlockGetter l,BlockPos p,CollisionContext c){return style==DoorStyle.LOBBY_AUTOMATIC?Shapes.block():Shapes.empty();}
     @Override public InteractionResult use(BlockState s,Level l,BlockPos p,Player player,InteractionHand hand,BlockHitResult hit){
         if(player.getItemInHand(hand).getItem() instanceof LinkerItem || player.getItemInHand(hand).getItem() instanceof SettingsItem)return InteractionResult.PASS;
         if(!l.isClientSide && l.getBlockEntity(p) instanceof DoorBlockEntity d)d.manualToggle();

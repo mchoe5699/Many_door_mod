@@ -1,5 +1,12 @@
 Minecraft 1.20.1 / Forge 47.4.0 / Java 17
 
-Copy manydoors-0.2.0.jar into mods/.
-For HomeNet integration, also install the original qwertys_homenet-1.0.0.jar.
-In multiplayer, install the mods on both client and server.
+Replace the old manydoors-0.2.0.jar with manydoors-0.3.0.jar in mods/.
+Do not install two Many Doors versions together.
+For HomeNet integration, keep the original qwertys_homenet-1.0.0.jar in mods/.
+In multiplayer, update both client and server.
+
+Settings tool: click a door for settings/design, click a device for position/range.
+Buttons and motion sensors mount on wall side faces.
+Custom designs: draw or import/drop PNG/JPEG files (up to 16 MB).
+Old hidden movement parts are cleaned while preserving door identity and settings.
+See README.md and docs/SCREENSHOTS.md for use and real screenshots.

@@ -23,8 +23,7 @@ public final class SettingsItem extends Item {
         }
         if(c.getLevel().getBlockEntity(c.getClickedPos()) instanceof ControlBlockEntity control){
             if(c.getPlayer() instanceof ServerPlayer p&&control.canEdit(p)&&p.level().mayInteract(p,control.getBlockPos())){
-                int n=control.getUpdateTag().getInt("Radius")%8+1;control.radius(n);
-                p.displayClientMessage(Component.translatable("message.manydoors.radius",n),true);
+                DoorNetwork.openDevice(p,control);
             }return InteractionResult.sidedSuccess(c.getLevel().isClientSide);
         }
         return InteractionResult.PASS;

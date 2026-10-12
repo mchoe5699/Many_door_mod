@@ -25,8 +25,9 @@ public final class DoorGeometry {
             case PIVOT -> leaf(out,w/2,0,.5,-w/2,h,t,a,0,mat);
             case SLIDE -> leaf(out,p*(w+.05),0,.5,w,h,t,0,0,mat);
             case DOUBLE_SLIDE -> {
-                leaf(out,-p*(w/2+.05),0,.5,w/2,h,t,0,0,mat);
-                leaf(out,w/2+p*(w/2+.05),0,.5,w/2,h,t,0,0,mat);
+                double start=style==DoorStyle.LOBBY_AUTOMATIC?1:0, opening=w-start;
+                leaf(out,start-p*(opening/2+.05),0,.5,opening/2,h,t,0,0,mat);
+                leaf(out,start+opening/2+p*(opening/2+.05),0,.5,opening/2,h,t,0,0,mat);
             }
             case TELESCOPIC -> {
                 for(int i=0;i<3;i++) leaf(out,i*w/3 + p*(w-i*w/3),0,.5+i*t*1.1,w/3,h,t,0,0,mat);
